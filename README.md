@@ -43,7 +43,7 @@ Dockerfile if necessary. When ready, simply use the Dockerfile to
 build the image.
 
 ```sh
-docker build -t turckcellmoc .
+docker build -t turkcellmoc .
 ```
 
 Once done, run the Docker image and map the port to whatever you wish on
@@ -53,7 +53,7 @@ port 8080 of the Docker (or whatever port was exposed in the Dockerfile)
 We can use the following code as the last step to run our project.
 
 ```sh
-docker run -d --name=turkcell -p 80:8080 turckcellmoc
+docker run -d --name=turkcell -p 80:8080 turkcellmoc
 ```
 
 Verify the deployment by navigating to your server address in
@@ -63,12 +63,19 @@ your preferred browser.
 127.0.0.1:80
 ```
 
-### Request Example
+#### Request Example
 
 To use Swagger, you can enter at the address below.
 ```sh
 http://localhost:80/swagger-ui.html
 ```
+#### Postman Collection Url
+
+```sh
+https://www.getpostman.com/collections/44e8eecafb9279ed96e2
+
+```
+
 #### Authentication - Get Token
 
 Curl request
