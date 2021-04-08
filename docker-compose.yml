@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  mongodb:
+    hostname: mongodbhost
+    container_name: mongodbcontainer
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: turkcellmongo
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+    restart: always
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - ~/turkcell/database/postgre/data/db:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=turkcellpostgre
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+  redis-standalone:
+    image: 'bitnami/redis:latest'
+    volumes:
+      - ~/turkcell/redis/redis-data:/var/lib/redis
+      - ~/turkcell/redis/redis.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'

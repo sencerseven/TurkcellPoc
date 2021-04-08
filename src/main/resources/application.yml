@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/turkcellpostgre
+    username: root
+    password: password
+    initialization-mode: always
+    platform: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://root:password@localhost:27017/turkcellmongo?authSource=admin
+      authentication-database: admin
+      database: turkcellmongo
+
+redis:
+  host: localhost
+  port: 6379
+  default-timeout: 500
+  expirations:
+    Menu: 1500
+
+
+taskExecutor:
+  threadSize: 2
+  queueCapacity: 1001
+
+logging:
+  level:
+    s7:
+      Application: WARN
+    org:
+      springframework:
+        web: ERROR
+    com:
+      turkcell:
+        poc: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
